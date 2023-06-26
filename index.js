@@ -42,7 +42,7 @@ function getData(url, callback) {
 
 const categoryTemplate = (categories) => {
   return `
-      <h2>Category</h2>
+      <h2>CATEGORY</h2>
       <div class="grid-container">
         <div class="grid-item electronics">${categories[0]}</div>
         <div class="center-column">
@@ -71,6 +71,7 @@ function filterData(list) {
   const categories = {};
   const bestSeller = [];
   const topPicks = [];
+  
 
   for (let index = 0; index < list.length; index++) {
     if (!categories[list[index].category])
@@ -82,8 +83,9 @@ function filterData(list) {
     if (list[index].rating.rate > 4.5 && list[index].rating.count > 5)
       topPicks.push(list[index]);
   }
-
+  console.log(categories, bestSeller, topPicks)
   return { categories, bestSeller, topPicks };
+  
 }
 
 const render = (products) => {
@@ -115,4 +117,3 @@ const render = (products) => {
   
 
 getData("https://fakestoreapi.com/products", render);
-
